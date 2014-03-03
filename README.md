@@ -4,7 +4,7 @@ CoffeeScript flavored JSON
 ## What's Different?
 Parsing CSON using CoffeeScript's `eval` function isn't ideal. Instead, we use [Jison](http://zaach.github.io/jison/).
 
-### Example
+## Example
 ```coffeescript
 {
     name: 'cson'
@@ -17,3 +17,6 @@ Parsing CSON using CoffeeScript's `eval` function isn't ideal. Instead, we use [
         chai: '0.0.0'
 }
 ```
+
+## Usage
+Coming soon
