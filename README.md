@@ -1,4 +1,4 @@
-# CSON
+# CSON [![Build Status](https://travis-ci.org/stronglink/cson.png?branch=master)](https://travis-ci.org/stronglink/cson)
 CoffeeScript flavored JSON
 
 ## What's Different?
