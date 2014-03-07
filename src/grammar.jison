@@ -29,8 +29,10 @@
 %%
 
 cson    
-    : object EOF    
+    : object EOF
         { return $object1; }
+    | array EOF
+        { return $array1; }
     ;
 
 object
@@ -74,10 +76,18 @@ pair
 array
     : '[' list ']'
         { $$ = '[' + $list1 + ']'; }
+    | '[' list NL ']'
+        { $$ = '[' + $list1 + ']'; }
+    | '[' NL list ']'
+        { $$ = '[' + $list1 + ']'; }
+    | '[' NL list NL ']'
+        { $$ = '[' + $list1 + ']'; }
     ;
 
 list
     : list ',' list_item
+        { $$ = $list1 + ',' + $list_item1; }
+    | list NL list_item
         { $$ = $list1 + ',' + $list_item1; }
     | list_item
     ;

@@ -1,6 +1,8 @@
 parser = require('./grammar').parser
 
-parseSync = (cson) ->
-    parser.parse cson
+parse = (cson) ->
+    try
+        obj = parser.parse cson
 
-module.exports.parseSync = parseSync
+
+module.exports.parse = parse

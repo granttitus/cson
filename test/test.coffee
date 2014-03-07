@@ -15,7 +15,7 @@ describe 'strings', ->
                     "key": "value"
                 }'
 
-        parsed = cson.parseSync input
+        parsed = cson.parse input
         expect(JSON.parse parsed).to.be.eql JSON.parse(json)
     
     it 'should compile a key with single quotes', ->
@@ -26,7 +26,7 @@ describe 'strings', ->
                     "key": "value"
                 }'
 
-        parsed = cson.parseSync input
+        parsed = cson.parse input
         expect(JSON.parse parsed).to.be.eql JSON.parse(json)
 
     it 'should compile a key with no quotes', ->
@@ -37,7 +37,7 @@ describe 'strings', ->
                     "key": "value"
                 }'
 
-        parsed = cson.parseSync input
+        parsed = cson.parse input
         expect(JSON.parse parsed).to.be.eql JSON.parse(json)
     
     it 'should compile a key and number value', ->
@@ -48,7 +48,7 @@ describe 'strings', ->
                     "key": 25
                 }'
 
-        parsed = cson.parseSync input
+        parsed = cson.parse input
         expect(JSON.parse parsed).to.be.eql JSON.parse(json)
 
     it 'should compile multiple pairs', ->
@@ -63,7 +63,7 @@ describe 'strings', ->
                     "age": 21
                 }'
 
-        parsed = cson.parseSync input
+        parsed = cson.parse input
         expect(JSON.parse parsed).to.be.eql JSON.parse(json)
     
     it 'should compile valid symbol keys', ->
@@ -76,33 +76,72 @@ describe 'strings', ->
                     "_": "underscore"
                 }'
 
-        parsed = cson.parseSync input
+        parsed = cson.parse input
         expect(JSON.parse parsed).to.be.eql JSON.parse(json)
 
 
 describe 'arrays', ->
     
-    it 'should compile an array'
-        #
-        #input = '{
-        #            numbers: [1, 2, 3, 4]
-        #            chars: [
-        #                \'a\'\n
-        #                \'b\'\n
-        #                \'c\'\n
-        #            ]
-        #        }'
-        #json = '{
-        #            "numbers": [1, 2, 3, 4],
-        #            "chars": [
-        #                \'a\',
-        #                \'b\',
-        #                \'c\'
-        #            ]
-        #        }'
+    it 'should compile an array', ->
+
+        input = '{
+                    numbers: [1, 2, 3, 4]
+                }'
+        json = '{
+                    "numbers": [1, 2, 3, 4]
+                }'
+
+        parsed = cson.parse input
+        expect(JSON.parse parsed).to.be.eql JSON.parse(json)
+
+    it 'should compile just an array', ->
+
+        input = '[1, 2, 3, 4]'
+        json = '[1, 2, 3, 4]'
+
+        parsed = cson.parse input
+        expect(JSON.parse parsed).to.be.eql JSON.parse(json)
+
+    it 'should compile a "sparse" array', ->
+
+        input = '{
+                    array:
+                    [
+                        \'a\'\n
+                        \'b\'\n
+                        \'c\'\n
+                    ]
+                }'
+        json = '{
+                    "array":
+                    [
+                        "a",
+                        "b",
+                        "c"
+                    ]
+                }'
+
+        parsed = cson.parse input
+        expect(JSON.parse parsed).to.be.eql JSON.parse(json)
+
+    it 'should compile a "squished" array ', ->
+
+        input = '{
+                    array: [ \'a\'\n
+                        \'b\'\n
+                        \'c\' ]
+                }'
+        json = '{
+                    "array":
+                    [
+                        "a",
+                        "b",
+                        "c"
+                    ]
+                }'
     
-        #parsed = cson.parseSync input
-        #expect(JSON.parse parsed).to.be.eql JSON.parse(json)
+        parsed = cson.parse input
+        expect(JSON.parse parsed).to.be.eql JSON.parse(json)
 
 describe 'nested objects', ->
     
@@ -120,5 +159,5 @@ describe 'nested objects', ->
                     }
                 }'
         
-        parsed = cson.parseSync input
+        parsed = cson.parse input
         expect(JSON.parse parsed).to.be.eql JSON.parse(json)
