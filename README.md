@@ -20,11 +20,13 @@ Parsing CSON using CoffeeScript's `eval` function isn't ideal. Instead, we use [
 
 ## Usage
 ```coffeescript
-input = '{
-            fruit:
-                name: apple
-                color: red
-         }'
+input = "{
+            name: 'apple'
+            color: 'red'
+         }"
 
-json = cson.parse input
+fruit = cson.parse input
+
+console.log fruit
+# { name: 'apple', color: 'red' }
 ```

@@ -15,8 +15,7 @@ describe 'strings', ->
                     "key": "value"
                 }'
 
-        parsed = cson.parse input
-        expect(JSON.parse parsed).to.be.eql JSON.parse(json)
+        expect(cson.parse input).to.be.eql JSON.parse(json)
     
     it 'should compile a key with single quotes', ->
         input = '{
@@ -26,8 +25,7 @@ describe 'strings', ->
                     "key": "value"
                 }'
 
-        parsed = cson.parse input
-        expect(JSON.parse parsed).to.be.eql JSON.parse(json)
+        expect(cson.parse input).to.be.eql JSON.parse(json)
 
     it 'should compile a key with no quotes', ->
         input = '{
@@ -37,8 +35,7 @@ describe 'strings', ->
                     "key": "value"
                 }'
 
-        parsed = cson.parse input
-        expect(JSON.parse parsed).to.be.eql JSON.parse(json)
+        expect(cson.parse input).to.be.eql JSON.parse(json)
     
     it 'should compile a key and number value', ->
         input = '{
@@ -48,8 +45,7 @@ describe 'strings', ->
                     "key": 25
                 }'
 
-        parsed = cson.parse input
-        expect(JSON.parse parsed).to.be.eql JSON.parse(json)
+        expect(cson.parse input).to.be.eql JSON.parse(json)
 
     it 'should compile multiple pairs', ->
         input = '{
@@ -63,8 +59,7 @@ describe 'strings', ->
                     "age": 21
                 }'
 
-        parsed = cson.parse input
-        expect(JSON.parse parsed).to.be.eql JSON.parse(json)
+        expect(cson.parse input).to.be.eql JSON.parse(json)
     
     it 'should compile valid symbol keys', ->
         input = '{
@@ -75,9 +70,7 @@ describe 'strings', ->
                     "$": "jQuery",
                     "_": "underscore"
                 }'
-
-        parsed = cson.parse input
-        expect(JSON.parse parsed).to.be.eql JSON.parse(json)
+        expect(cson.parse input).to.be.eql JSON.parse(json)
 
 
 describe 'arrays', ->
@@ -91,16 +84,14 @@ describe 'arrays', ->
                     "numbers": [1, 2, 3, 4]
                 }'
 
-        parsed = cson.parse input
-        expect(JSON.parse parsed).to.be.eql JSON.parse(json)
+        expect(cson.parse input).to.be.eql JSON.parse(json)
 
     it 'should compile just an array', ->
 
         input = '[1, 2, 3, 4]'
         json = '[1, 2, 3, 4]'
 
-        parsed = cson.parse input
-        expect(JSON.parse parsed).to.be.eql JSON.parse(json)
+        expect(cson.parse input).to.be.eql JSON.parse(json)
 
     it 'should compile a "sparse" array', ->
 
@@ -121,8 +112,7 @@ describe 'arrays', ->
                     ]
                 }'
 
-        parsed = cson.parse input
-        expect(JSON.parse parsed).to.be.eql JSON.parse(json)
+        expect(cson.parse input).to.be.eql JSON.parse(json)
 
     it 'should compile a "squished" array ', ->
 
@@ -140,8 +130,7 @@ describe 'arrays', ->
                     ]
                 }'
     
-        parsed = cson.parse input
-        expect(JSON.parse parsed).to.be.eql JSON.parse(json)
+        expect(cson.parse input).to.be.eql JSON.parse(json)
 
 describe 'nested objects', ->
     
@@ -159,5 +148,4 @@ describe 'nested objects', ->
                     }
                 }'
         
-        parsed = cson.parse input
-        expect(JSON.parse parsed).to.be.eql JSON.parse(json)
+        expect(cson.parse input).to.be.eql JSON.parse(json)

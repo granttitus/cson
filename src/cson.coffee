@@ -2,7 +2,7 @@ parser = require('./grammar').parser
 
 parse = (cson) ->
     try
-        obj = parser.parse cson
-
+        json = parser.parse cson
+        JSON.parse json
 
 module.exports.parse = parse
